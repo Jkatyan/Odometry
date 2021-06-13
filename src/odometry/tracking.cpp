@@ -47,11 +47,11 @@ void track(){
         deltaBack = 0,
         sideCoord = 0,
         backCoord = 0,
-        i = 0;
+        i, Ri = imu.get_rotation();
 
   while(trackenabled){
 
-    i = (imu.get_rotation() - imu.get_rotation() - diff);
+    i = (imu.get_rotation() - Ri - diff);
 
     curRotation = i;
 
