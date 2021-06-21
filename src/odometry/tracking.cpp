@@ -45,8 +45,8 @@ void track(){
         lastBack = 0,
         deltaSide = 0,
         deltaBack = 0,
-        sideCoord = 0,
-        backCoord = 0,
+        sideChord = 0,
+        backChord = 0,
         i, Ri = imu.get_rotation();
 
   while(trackenabled){
@@ -68,20 +68,20 @@ void track(){
     lastBack = curBack;
 
     if(deltaTheta != 0){
-      backCoord = (2*sin(deltaTheta/2))*(deltaBack/deltaTheta + Sb);
-      sideCoord = (2*sin(deltaTheta/2))*(deltaSide/deltaTheta + Ss);
+      backChord = (2*sin(deltaTheta/2))*(deltaBack/deltaTheta + Sb);
+      sideChord = (2*sin(deltaTheta/2))*(deltaSide/deltaTheta + Ss);
     }
     else{
-       sideCoord = deltaSide;
-       backCoord = deltaBack;
+       sideChord = deltaSide;
+       backChord = deltaBack;
     }
 
     thetaAvg = angle + deltaTheta/2;
 
-    x += sideCoord * sin(thetaAvg);
-    y += sideCoord * cos(thetaAvg);
-    x += backCoord * -cos(thetaAvg);
-    y += backCoord *  sin(thetaAvg);
+    x += sideChord * sin(thetaAvg);
+    y += sideChord * cos(thetaAvg);
+    x += backChord * -cos(thetaAvg);
+    y += backChord *  sin(thetaAvg);
 
     angle += deltaTheta;
 
